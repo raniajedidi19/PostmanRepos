@@ -14,8 +14,6 @@ jobs:
 
   build:
     runs-on: windows-latest
-    container:
-      image: postman/newman
 
     steps:
     - name: Checkout code
