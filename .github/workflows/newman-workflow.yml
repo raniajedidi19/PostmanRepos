@@ -1,1 +1,27 @@
+name: ebook UI NRT 
 
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+
+    
+run-name: API tests by @${{ github.actor }}
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  build:
+    runs-on: windows-latest
+    container:
+      image: postman/newman
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run API tests
+      run: newman run "Restful Booker BVT.postman_collection.json" -e "Production.postman_environment.json"
+
+ 
